@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   # def show
   #   render json: @user
-  # end
+  # end 
 
   # POST /users
   # def create

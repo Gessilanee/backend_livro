@@ -4,12 +4,13 @@ class LivrosController < ApplicationController
   # GET /livros
   def index
     @livros = Livro.all
+    render json: { data: @livros }, status: :ok
   end
 
   # GET /livros/1
-  def show
-    render json: @livro
-  end
+  # def show
+  #   render json: @livro
+  # end
 
   # POST /livros
   def create
@@ -22,19 +23,19 @@ class LivrosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /livros/1
-  def update
-    if @livro.update(livro_params)
-      render json: @livro
-    else
-      render json: @livro.errors, status: :unprocessable_entity
-    end
-  end
+  # # PATCH/PUT /livros/1
+  # def update
+  #   if @livro.update(livro_params)
+  #     render json: @livro
+  #   else
+  #     render json: @livro.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # DELETE /livros/1
-  def destroy
-    @livro.destroy
-  end
+  # # DELETE /livros/1
+  # def destroy
+  #   @livro.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
