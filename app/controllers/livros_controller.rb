@@ -8,34 +8,38 @@ class LivrosController < ApplicationController
   end
 
   # GET /livros/1
-  # def show
-  #   render json: @livro
-  # end
+  def show
+    render json: @livro
+  end
 
   # POST /livros
   def create
     @livro = Livro.new(livro_params)
 
     if @livro.save
-      render json: @livro, status: :created, location: @livro
+      # render json: @livro, status: :created, location: @livro
+      msg = 'Foi cadastrado';
+      render json: { msg: msg }, status: :ok
     else
-      render json: @livro.errors, status: :unprocessable_entity
+      # render json: @livro.errors, status: :unprocessable_entity
+      msg = 'Não foi possivel realizar cadastro';
+      render json: { mgs: msg }, status: :unauthorized 
     end
   end
 
-  # # PATCH/PUT /livros/1
-  # def update
-  #   if @livro.update(livro_params)
-  #     render json: @livro
-  #   else
-  #     render json: @livro.errors, status: :unprocessable_entity
-  #   end
-  # end
+   # PATCH/PUT /livros/1
+   def update
+    if @livro.update(livro_params)
+       render json: @livro
+     else
+       render json: @livro.errors, status: :unprocessable_entity
+     end
+   end
 
   # # DELETE /livros/1
-  # def destroy
-  #   @livro.destroy
-  # end
+   def destroy
+     @livro.destroy
+   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
